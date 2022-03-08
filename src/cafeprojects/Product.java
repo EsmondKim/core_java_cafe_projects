@@ -1,14 +1,13 @@
 package cafeprojects;
 
 //Fields
-public class Product {
-private String name = "Product";
-private Double price = 1.00;
-private String description = "A tasty treat!";
-private Double quantity = 0.0;
+public abstract class Product {
+protected String name = "Product";
+protected Double price = 1.00;
+protected String description = "A tasty treat!";
+protected Double quantity = 0.0;
 
 //Constructor
-
     public Product() {
         System.out.println("No arg constructor was called.");
     }//no arg Constructor
@@ -20,12 +19,7 @@ private Double quantity = 0.0;
     }//Product constructor with params
 
 //Methods
-    public Double calculateProductTotal() {
-        Double subtotal = quantity * price;
-        Double salesTax = subtotal * .08;
-        Double total = subtotal + salesTax;
-        return total;
-    }
+    public abstract Double calculateProductTotal();
 
 //Getters and Setters
     public String getName() {
