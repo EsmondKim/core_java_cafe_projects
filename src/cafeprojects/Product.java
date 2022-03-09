@@ -1,11 +1,17 @@
 package cafeprojects;
 
+import java.util.ArrayList;
+
 //Fields
 public abstract class Product {
 protected String name = "Product";
-protected Double price = 1.00;
+protected Double price;
 protected String description = "A tasty treat!";
-protected Double quantity = 0.0;
+protected Double quantity;
+protected static Double shoppingCartSubtotal = 0.0;
+protected static Double shoppingCartSalestaxPercentage = 0.08;
+protected static Double shoppingCartSalestaxTotal;
+protected static Double shoppingCartTotal;
 
 //Constructor
     public Product() {
@@ -18,8 +24,25 @@ protected Double quantity = 0.0;
         this.description = description;
     }//Product constructor with params
 
+//Nested class: shoppingCart
+    public static ArrayList<Object> ShoppingCart = new ArrayList<Object>();
+
 //Methods
-    public abstract Double calculateProductTotal();
+    public abstract void addOptions();
+
+    public abstract void printOptions(boolean option1, boolean option2);
+
+    public abstract void addToShoppingCartSubtotal();
+
+    public static void calculateShoppingCartSalesTax() {
+        shoppingCartSalestaxTotal = shoppingCartSubtotal * shoppingCartSalestaxPercentage;
+    }//calculateShoppingCartSalesTax()
+
+    public static void calculateShoppingCartTotal() {
+        shoppingCartTotal = shoppingCartSubtotal + shoppingCartSalestaxTotal;
+
+    }
+
 
 //Getters and Setters
     public String getName() {
